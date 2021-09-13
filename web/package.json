@@ -1,8 +1,8 @@
 {
   "private": true,
-  "name": "blog-with-gatsby-web",
-  "version": "1.0.7",
-  "author": "Sanity <hello@sanity.io>",
+  "name": "nstep-website-frontend",
+  "version": "1.0.0",
+  "author": "NStep",
   "scripts": {
     "build": "gatsby build",
     "clean-cache": "gatsby clean",
