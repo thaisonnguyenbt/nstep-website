@@ -3,7 +3,7 @@ require('dotenv').config({
   path: `.env.${process.env.NODE_ENV || 'development'}`,
 });
 
-const clientConfig = require('./client-config');
+const clientConfig = require('./src/config/client-config');
 
 const isProd = process.env.NODE_ENV === 'production';
 
@@ -17,8 +17,8 @@ module.exports = {
       resolve: 'gatsby-source-sanity',
       options: {
         ...clientConfig.sanity,
-        watchMode: isProd,
-        overlayDrafts: isProd,
+        watchMode: !isProd,
+        overlayDrafts: !isProd,
       },
     },
   ],

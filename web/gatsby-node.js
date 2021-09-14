@@ -17,8 +17,15 @@ async function createNstepPages(graphql, actions) {
             }
             seoMetaImage {
               asset {
+                _id
+                originalFilename
+                description
+                altText
+                label
+                title
                 url
                 path
+                altText
               }
               alt
               caption
@@ -42,7 +49,7 @@ async function createNstepPages(graphql, actions) {
         path: '/',
         component: require.resolve('./src/templates/PageOneCol.tsx'),
         context: {
-          slug: slug.current,
+          page: page,
         },
       });
     });

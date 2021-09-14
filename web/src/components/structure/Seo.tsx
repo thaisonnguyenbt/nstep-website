@@ -1,12 +1,15 @@
 import React from 'react';
 import Helmet from 'react-helmet';
 import siteMetadata from 'config/SiteMetaData';
+import { NstepImage } from 'schema';
+import { buildImageObj, imageUrlFor } from 'utils/CommonUtils';
 
 interface SEOProps {
-  description: string;
+  description?: string;
+  title?: string;
   lang?: string;
   meta?: any;
-  title: string;
+  image?: NstepImage;
 }
 
 const SEO: React.FunctionComponent<SEOProps> = ({
@@ -14,40 +17,55 @@ const SEO: React.FunctionComponent<SEOProps> = ({
   lang,
   meta,
   title,
+  image,
 }: SEOProps) => {
+  const metaDescription = description || siteMetadata.description;
+  const siteTitle = title || siteMetadata.title;
+  const metaImage = image?.asset
+    ? imageUrlFor(buildImageObj(image)).width(1200).url()
+    : '';
+
   return (
     <Helmet
-      htmlAttributes={{
-        lang,
-      }}
+      htmlAttributes={{ lang }}
       title={title}
-      titleTemplate={`%s | ${siteMetadata.title}`}
+      titleTemplate={title === siteTitle ? '%s' : `%s | ${siteTitle}`}
       meta={[
         {
-          name: `description`,
-          content: description,
+          name: 'description',
+          content: metaDescription,
         },
         {
-          property: `og:title`,
+          property: 'og:title',
           content: title,
         },
         {
-          property: `og:description`,
-          content: siteMetadata.description,
+          property: 'og:description',
+          content: metaDescription,
         },
         {
-          property: `og:type`,
-          content: `website`,
+          property: 'og:type',
+          content: 'website',
         },
-      ].concat(meta)}
+        {
+          property: 'og:image',
+          content: metaImage,
+        },
+        {
+          name: 'twitter:card',
+          content: 'summary',
+        },
+        {
+          name: 'twitter:title',
+          content: title,
+        },
+        {
+          name: 'twitter:description',
+          content: metaDescription,
+        },
+      ].concat(meta || [])}
     />
   );
-};
-
-SEO.defaultProps = {
-  lang: `en`,
-  meta: [],
-  description: ``,
 };
 
 export default SEO;
