@@ -11,6 +11,7 @@ module.exports = {
   plugins: [
     'gatsby-plugin-postcss',
     'gatsby-plugin-image',
+    `gatsby-plugin-root-import`,
     'gatsby-plugin-react-helmet',
     {
       resolve: 'gatsby-source-sanity',
