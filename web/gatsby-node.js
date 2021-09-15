@@ -15,6 +15,10 @@ async function createNstepPages(graphql, actions) {
               label
               value
             }
+            menuItems {
+              title
+              linkTo
+            }
             seoMetaImage {
               asset {
                 _id
@@ -46,7 +50,7 @@ async function createNstepPages(graphql, actions) {
       if (!slug) return;
 
       createPage({
-        path: '/',
+        path: slug.current,
         component: require.resolve('./src/templates/PageOneCol.tsx'),
         context: {
           page: page,

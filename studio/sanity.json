@@ -1,11 +1,11 @@
 {
   "root": true,
+  "api": {
+    "projectId": "5imzs8cd",
+    "dataset": "production"
+  },
   "project": {
     "name": "NStep Website"
-  },
-  "api": {
-    "projectId": "8p3kcvtl",
-    "dataset": "production"
   },
   "plugins": [
     "@sanity/base",

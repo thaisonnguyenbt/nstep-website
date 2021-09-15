@@ -10,12 +10,14 @@ export interface PortableTextProps {
 
 const PortableText: React.FunctionComponent<PortableTextProps> = ({
   blocks,
-}: PortableTextProps) => (
-  <BasePortableText
-    blocks={blocks}
-    serializers={serializers}
-    {...clientConfig.sanity}
-  />
-);
+}: PortableTextProps) => {
+  return (
+    <BasePortableText
+      blocks={blocks}
+      serializers={serializers}
+      {...clientConfig.sanity}
+    />
+  );
+};
 
 export default PortableText;

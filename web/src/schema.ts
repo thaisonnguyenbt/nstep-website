@@ -94,6 +94,13 @@ export interface Page extends SanityDocument {
   seoMetaImage?: NstepImage;
 
   /**
+   * menuItems — `array`
+   *
+   * Header menu items for the current page and its children
+   */
+  menuItems?: Array<SanityKeyed<HeaderMenuItem>>;
+
+  /**
    * Chilren Pages — `array`
    *
    *
@@ -129,6 +136,47 @@ export type NstepImage = {
    * Important for SEO and accessiblity.
    */
   alt?: string;
+};
+
+export type HeaderMenuItem = {
+  _type: 'headerMenuItem';
+  /**
+   * Title — `string`
+   *
+   * Title to be displayed on UI.
+   */
+  title?: string;
+
+  /**
+   * Link To — `string`
+   *
+   * Target Location Link.
+   */
+  linkTo?: string;
+};
+
+export type WhoWeAre = {
+  _type: 'whoWeAre';
+  /**
+   * Title — `string`
+   *
+   * Component title to be displyed in red
+   */
+  title?: string;
+
+  /**
+   * Left Content — `array`
+   *
+   * Content on the left column
+   */
+  leftContent?: Array<SanityKeyed<SanityBlock>>;
+
+  /**
+   * Right Content — `array`
+   *
+   * Content on the right column
+   */
+  rightContent?: Array<SanityKeyed<SanityBlock>>;
 };
 
 export type Documents = Page;

@@ -3,6 +3,7 @@ import React, { ReactElement } from 'react';
 import SEO from 'components/structure/Seo';
 import PortableText from 'components/structure/PortableText';
 import { CreatePageProps } from 'types/types';
+import Header from 'components/structure/Header';
 
 const PageOneCol: React.FunctionComponent<CreatePageProps> = ({
   pageContext,
@@ -15,6 +16,7 @@ const PageOneCol: React.FunctionComponent<CreatePageProps> = ({
         description={page.description}
         image={page.seoMetaImage}
       />
+      <Header items={page.menuItems} />
       <PortableText blocks={page._rawBody} />
     </Layout>
   );

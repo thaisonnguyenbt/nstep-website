@@ -51,6 +51,16 @@ export default {
       description: 'Thumbnail image for SEO and social sharing',
     },
     {
+      name: 'menuItems',
+      type: 'array',
+      description: 'Header menu items for the current page and its children',
+      of: [
+        {
+          type: 'headerMenuItem',
+        },
+      ],
+    },
+    {
       name: 'children',
       title: 'Chilren Pages',
       type: 'array',

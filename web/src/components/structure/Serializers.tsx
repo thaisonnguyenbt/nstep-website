@@ -1,5 +1,9 @@
+import WhoWeAreComponent from 'components/content/WhoWeAreComponent';
+
 const serializers = {
-  types: {},
+  types: {
+    whoWeAre: WhoWeAreComponent,
+  },
 };
 
 export default serializers;
