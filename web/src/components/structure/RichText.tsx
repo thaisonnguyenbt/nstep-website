@@ -2,15 +2,15 @@ import React from 'react';
 import clientConfig from 'config/client-config';
 import BasePortableText from '@sanity/block-content-to-react';
 import serializers from 'components/structure/Serializers';
-import { BodyPortableText } from 'schema';
+import { RichText } from 'schema';
 
-export interface PortableTextProps {
-  blocks?: BodyPortableText;
+export interface RichTextProps {
+  blocks?: RichText;
 }
 
-const PortableText: React.FunctionComponent<PortableTextProps> = ({
+const PortableText: React.FunctionComponent<RichTextProps> = ({
   blocks,
-}: PortableTextProps) => {
+}: RichTextProps) => {
   return (
     <BasePortableText
       blocks={blocks}

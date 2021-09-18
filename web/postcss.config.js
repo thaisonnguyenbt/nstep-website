@@ -1,14 +1,16 @@
 module.exports = () => ({
   plugins: [
-    require("postcss-preset-env")({
+    require('tailwindcss'),
+    require('autoprefixer'),
+    require('postcss-preset-env')({
       stage: 3,
       features: {
-        "color-mod-function": { unresolved: "warn" },
-        "nesting-rules": true,
-        "custom-media-queries": {
+        'color-mod-function': { unresolved: 'warn' },
+        'nesting-rules': true,
+        'custom-media-queries': {
           preserve: false,
         },
-        "custom-properties": {
+        'custom-properties': {
           preserve: false,
         },
       },

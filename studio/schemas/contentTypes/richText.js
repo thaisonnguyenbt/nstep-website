@@ -1,5 +1,8 @@
+import { FaAlignCenter } from 'react-icons/fa';
+import TextCenter from '../renderers/TextCenter';
+
 export default {
-  name: 'bodyPortableText',
+  name: 'richText',
   type: 'array',
   title: 'Page body',
   of: [
@@ -32,6 +35,16 @@ export default {
           { title: 'Strong', value: 'strong' },
           { title: 'Emphasis', value: 'em' },
           { title: 'Code', value: 'code' },
+          { title: 'Underline', value: 'underline' },
+          { title: 'Strike', value: 'strike-through' },
+          {
+            title: 'Center',
+            value: 'text-center',
+            blockEditor: {
+              icon: FaAlignCenter,
+              render: TextCenter,
+            },
+          },
         ],
         // Annotations can be any object structure – e.g. a link or a footnote.
         annotations: [
@@ -49,7 +62,19 @@ export default {
           },
         ],
       },
-      of: [{ type: 'page' }, { type: 'image' }, { type: 'whoWeAre' }],
+      of: [
+        { type: 'image' },
+        { type: 'lineBreak' },
+        { type: 'patnerLogos' },
+        { type: 'twoColums' },
+        { type: 'fullWidthImage' },
+        { type: 'sectionHeader' },
+        { type: 'imageTilesGrid' },
+        { type: 'imageTileWithDesc' },
+        { type: 'benefits' },
+        { type: 'teamQuotesCarousel' },
+        { type: 'imageWithInfoBox' },
+      ],
     },
   ],
 };

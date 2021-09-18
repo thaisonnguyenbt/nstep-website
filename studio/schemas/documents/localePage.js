@@ -1,7 +1,10 @@
 export default {
-  name: 'page',
+  title: 'LocalePage',
+  name: 'localePage',
   type: 'document',
-  title: 'Page',
+  // This property says we should have all fields localized,
+  // except any field that explicitly says localize: false
+  localize: true,
   fields: [
     {
       name: 'title',
@@ -19,13 +22,13 @@ export default {
         source: 'title',
         maxLength: 96,
       },
+      localize: false,
     },
     {
-      name: 'isRoot',
+      name: 'darkTheme',
       type: 'boolean',
-      title: 'Is this a root page ?',
-      description:
-        'The pages hierarchy and sitemap will be generated from Root page. Only 1 root page allowed',
+      title: 'Dark Theme',
+      description: 'enable this field to render page in dark color',
     },
     {
       name: 'navigationTitle',
@@ -43,12 +46,19 @@ export default {
       name: 'tags',
       type: 'tags',
       title: 'Tags',
+      localize: false,
     },
     {
       name: 'seoMetaImage',
       type: 'nstepImage',
       title: 'SEO Meta Image',
       description: 'Thumbnail image for SEO and social sharing',
+    },
+    {
+      name: 'headerBackgroundImage',
+      type: 'nstepImage',
+      title: 'Header Background Image',
+      description: 'Background image to be displayed in the header',
     },
     {
       name: 'menuItems',
@@ -59,6 +69,7 @@ export default {
           type: 'headerMenuItem',
         },
       ],
+      localize: false,
     },
     {
       name: 'children',
@@ -66,13 +77,14 @@ export default {
       type: 'array',
       of: [
         {
-          type: 'page',
+          type: 'localePage',
         },
       ],
+      localize: false,
     },
     {
       name: 'body',
-      type: 'bodyPortableText',
+      type: 'richText',
       title: 'Body',
     },
   ],

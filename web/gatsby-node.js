@@ -1,38 +1,105 @@
+const locales = ['en', 'vn'];
+
 async function createNstepPages(graphql, actions) {
   const { createPage } = actions;
   const result = await graphql(`
-    query MyQuery {
-      allSanityPage(filter: { slug: { current: { eq: "/" } } }) {
+    query allPagesQuery {
+      allSanityLocalePage(filter: { slug: { current: { eq: null } } }) {
         edges {
           node {
-            title
+            title {
+              en
+              vn
+            }
             slug {
               current
             }
-            navigationTitle
-            description
+            darkTheme {
+              en
+              vn
+            }
+            navigationTitle {
+              en
+              vn
+            }
+            description {
+              en
+              vn
+            }
             tags {
               label
               value
             }
             menuItems {
-              title
-              linkTo
+              title {
+                en
+                vn
+              }
+              linkTo {
+                en
+                vn
+              }
+              isHighLight
             }
             seoMetaImage {
-              asset {
-                _id
-                originalFilename
-                description
-                altText
-                label
-                title
-                url
-                path
-                altText
+              en {
+                asset {
+                  _id
+                  originalFilename
+                  description
+                  altText
+                  label
+                  title
+                  url
+                  path
+                  altText
+                }
+                alt
               }
-              alt
-              caption
+              vn {
+                asset {
+                  _id
+                  originalFilename
+                  description
+                  altText
+                  label
+                  title
+                  url
+                  path
+                  altText
+                }
+                alt
+              }
+            }
+            headerBackgroundImage {
+              en {
+                asset {
+                  _id
+                  originalFilename
+                  description
+                  altText
+                  label
+                  title
+                  url
+                  path
+                  altText
+                }
+                alt
+              }
+              vn {
+                asset {
+                  _id
+                  originalFilename
+                  description
+                  altText
+                  label
+                  title
+                  url
+                  path
+                  altText
+                }
+                alt
+              }
             }
             _rawBody
           }
@@ -41,19 +108,26 @@ async function createNstepPages(graphql, actions) {
     }
   `);
   if (result.errors) throw result.errors;
-
-  const pageEdges = (result.data.allSanityPage || {}).edges || [];
+  const pageEdges = (result.data.allSanityLocalePage || {}).edges || [];
   pageEdges
     .map(page => page.node)
-    .forEach(page => {
-      const { slug } = page;
-      if (!slug) return;
+    .forEach(localePage => {
+      locales.forEach(locale => {
+        const page = flattenByLanguage({ ...localePage }, locale);
+        createPage({
+          path: '/' + locale,
+          component: require.resolve('./src/templates/PageOneCol.tsx'),
+          context: {
+            page: page,
+          },
+        });
+      });
 
       createPage({
-        path: slug.current,
+        path: '/',
         component: require.resolve('./src/templates/PageOneCol.tsx'),
         context: {
-          page: page,
+          page: flattenByLanguage(localePage, 'en'),
         },
       });
     });
@@ -67,4 +141,37 @@ async function createNstepPages(graphql, actions) {
 
 exports.createPages = async ({ graphql, actions }) => {
   await createNstepPages(graphql, actions);
+};
+
+/**
+ * Flatten object to remove the layer of locale
+ *
+ * @param {*} obj
+ *  "title": {
+ *    "en": "Home",
+ *    "vn": "Trang Chủ"
+ *  }
+ * @param {*} locale
+ *      "en"
+ * @returns
+ *    ===> title: "Home"
+ */
+const flattenByLanguage = (obj, locale) => {
+  if (!obj) return obj;
+
+  if (Array.isArray(obj))
+    return obj.map(item => flattenByLanguage(item, locale));
+
+  if (typeof obj !== 'object') return obj;
+
+  if (Object.keys(obj).includes(locale)) {
+    return flattenByLanguage(obj[locale], locale);
+  }
+
+  const result = {};
+  for (const key in obj) {
+    result[key] = flattenByLanguage(obj[key], locale);
+  }
+
+  return result;
 };

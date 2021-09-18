@@ -1,27 +1,26 @@
 export default {
-  name: 'whoWeAre',
+  name: 'twoColums',
   type: 'object',
-  title: 'Who We Are',
+  title: 'Two Colmuns',
   fields: [
     {
       name: 'title',
       type: 'string',
       title: 'Title',
-      description: 'Component title to be displyed in red',
+      description:
+        'Component title - used to reference in studio only - not displayed in UI',
     },
     {
       name: 'leftContent',
-      type: 'array',
+      type: 'richText',
       title: 'Left Content',
       description: 'Content on the left column',
-      of: [{ type: 'block' }],
     },
     {
       name: 'rightContent',
-      type: 'array',
+      type: 'richText',
       title: 'Right Content',
       description: 'Content on the right column',
-      of: [{ type: 'block' }],
     },
   ],
   preview: {

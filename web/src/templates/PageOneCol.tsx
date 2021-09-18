@@ -1,23 +1,19 @@
 import Layout from 'components/structure/Layout';
 import React, { ReactElement } from 'react';
-import SEO from 'components/structure/Seo';
-import PortableText from 'components/structure/PortableText';
+import RichText from 'components/structure/RichText';
 import { CreatePageProps } from 'types/types';
-import Header from 'components/structure/Header';
 
 const PageOneCol: React.FunctionComponent<CreatePageProps> = ({
   pageContext,
 }: CreatePageProps): ReactElement => {
   const { page } = pageContext;
+
+  if (!page || !page._rawBody) {
+    return <></>;
+  }
   return (
     <Layout pageContext={pageContext}>
-      <SEO
-        title={page.title}
-        description={page.description}
-        image={page.seoMetaImage}
-      />
-      <Header items={page.menuItems} />
-      <PortableText blocks={page._rawBody} />
+      <RichText blocks={page?._rawBody} />
     </Layout>
   );
 };
