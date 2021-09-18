@@ -3,12 +3,20 @@ import { HeaderMenuItem, SanityKeyed } from 'schema';
 import { Link } from 'gatsby';
 export interface HeaderProps {
   items?: Array<SanityKeyed<HeaderMenuItem>>;
+  slug?: string;
 }
 
 const Header: React.FunctionComponent<HeaderProps> = ({
   items,
+  slug,
 }: HeaderProps): ReactElement => {
   if (!items) return <></>;
+
+  let path = slug || '';
+
+  if (path && !path.startsWith('/')) {
+    path = '/' + path;
+  }
 
   return (
     <div className="h-20">
@@ -24,10 +32,10 @@ const Header: React.FunctionComponent<HeaderProps> = ({
         );
       })}
 
-      <Link className="float-right px-4" to="/vn">
+      <Link className="float-right px-4" to={path + '/vn'}>
         VN
       </Link>
-      <Link className="float-right px-4" to="/en">
+      <Link className="float-right px-4" to={path + '/en'}>
         EN
       </Link>
     </div>

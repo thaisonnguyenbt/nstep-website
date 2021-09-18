@@ -29,7 +29,7 @@ const Layout: React.FunctionComponent<PropsWithChildren<LayoutProps>> = ({
           description={page.description}
           image={page.seoMetaImage}
         />
-        <Header items={page.menuItems} />
+        <Header items={page.menuItems} slug={page.slug?.current} />
         <div>{children}</div>
       </div>
     </div>

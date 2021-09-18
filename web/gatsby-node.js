@@ -4,7 +4,7 @@ async function createNstepPages(graphql, actions) {
   const { createPage } = actions;
   const result = await graphql(`
     query allPagesQuery {
-      allSanityLocalePage(filter: { slug: { current: { eq: null } } }) {
+      allSanityLocalePage {
         edges {
           node {
             title {
@@ -112,10 +112,12 @@ async function createNstepPages(graphql, actions) {
   pageEdges
     .map(page => page.node)
     .forEach(localePage => {
+      const { slug } = localePage;
       locales.forEach(locale => {
         const page = flattenByLanguage({ ...localePage }, locale);
+        const path = [slug?.current, locale].join('/');
         createPage({
-          path: '/' + locale,
+          path: path.startsWith('/') ? path : '/' + path,
           component: require.resolve('./src/templates/PageOneCol.tsx'),
           context: {
             page: page,
@@ -123,8 +125,9 @@ async function createNstepPages(graphql, actions) {
         });
       });
 
+      const pagePath = slug?.current || '/';
       createPage({
-        path: '/',
+        path: pagePath.startsWith('/') ? pagePath : '/' + pagePath,
         component: require.resolve('./src/templates/PageOneCol.tsx'),
         context: {
           page: flattenByLanguage(localePage, 'en'),

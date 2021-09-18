@@ -387,8 +387,8 @@ export type PartnerLogoItem = {
   image?: NstepImage;
 };
 
-export type PatnerLogos = {
-  _type: 'patnerLogos';
+export type PartnerLogos = {
+  _type: 'partnerLogos';
   /**
    * Component Title — `string`
    *
@@ -544,7 +544,7 @@ export type TeamQuotesCarousel = {
 export type ImageWithInfoBox = {
   _type: 'imageWithInfoBox';
   /**
-   * Header — `text`
+   * Header — `string`
    *
    *
    */
@@ -558,14 +558,14 @@ export type ImageWithInfoBox = {
   description?: string;
 
   /**
-   * Button Text — `text`
+   * Button Text — `string`
    *
    *
    */
   buttonText?: string;
 
   /**
-   * Button Link — `text`
+   * Button Link — `string`
    *
    *
    */

@@ -1,6 +1,6 @@
 export default {
-  title: 'Patner Logos',
-  name: 'patnerLogos',
+  title: 'Partner Logos',
+  name: 'partnerLogos',
   type: 'object',
   fields: [
     {

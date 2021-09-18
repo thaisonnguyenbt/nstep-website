@@ -65,7 +65,7 @@ export default {
       of: [
         { type: 'image' },
         { type: 'lineBreak' },
-        { type: 'patnerLogos' },
+        { type: 'partnerLogos' },
         { type: 'twoColums' },
         { type: 'fullWidthImage' },
         { type: 'sectionHeader' },
