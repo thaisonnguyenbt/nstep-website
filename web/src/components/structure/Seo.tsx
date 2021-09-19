@@ -20,16 +20,15 @@ const SEO: React.FunctionComponent<SEOProps> = ({
   image,
 }: SEOProps) => {
   const metaDescription = description || siteMetadata.description;
-  const siteTitle = title || siteMetadata.title;
   const metaImage = image?.asset
-    ? imageUrlFor(buildImageObj(image)).width(1200).url()
-    : '';
+    ? imageUrlFor(buildImageObj(image)).width(1200).url() || undefined
+    : undefined;
 
   return (
     <Helmet
       htmlAttributes={{ lang }}
       title={title}
-      titleTemplate={title === siteTitle ? '%s' : `%s | ${siteTitle}`}
+      titleTemplate={`%s | ${siteMetadata.title}`}
       meta={[
         {
           name: 'description',
@@ -64,7 +63,9 @@ const SEO: React.FunctionComponent<SEOProps> = ({
           content: metaDescription,
         },
       ].concat(meta || [])}
-    />
+    >
+      <link rel="image_src" href={metaImage} />
+    </Helmet>
   );
 };
 

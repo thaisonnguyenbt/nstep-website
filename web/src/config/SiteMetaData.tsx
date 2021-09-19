@@ -1,6 +1,6 @@
 const metadata = {
-  title: `NStep Title`,
-  description: `NStep Description`,
+  title: `NStep`,
+  description: `NStep`,
 };
 
 export default metadata;
