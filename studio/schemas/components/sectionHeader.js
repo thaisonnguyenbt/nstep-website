@@ -1,3 +1,5 @@
+import SectionHeader from './renderers/SectionHeader';
+
 export default {
   name: 'sectionHeader',
   title: 'Section Header',
@@ -16,4 +18,14 @@ export default {
       type: 'string',
     },
   ],
+  preview: {
+    select: {
+      header: 'header',
+      sectionId: 'sectionId',
+    },
+    prepare(selection) {
+      return selection;
+    },
+    component: SectionHeader,
+  },
 };

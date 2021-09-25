@@ -1,3 +1,5 @@
+import PartnerLogos from './renderers/PartnerLogos';
+
 export default {
   title: 'Partner Logos',
   name: 'partnerLogos',
@@ -19,11 +21,14 @@ export default {
   preview: {
     select: {
       title: 'title',
+      logos: 'logos',
     },
-    prepare({ title = 'No title' }) {
+    prepare({ title = 'No title', logos }) {
       return {
         title,
+        logos,
       };
     },
+    component: PartnerLogos,
   },
 };

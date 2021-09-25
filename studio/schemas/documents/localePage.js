@@ -1,7 +1,10 @@
+import { FaAtlas } from 'react-icons/fa';
+
 export default {
   title: 'LocalePage',
   name: 'localePage',
   type: 'document',
+  icon: FaAtlas,
   // This property says we should have all fields localized,
   // except any field that explicitly says localize: false
   localize: true,
@@ -28,7 +31,17 @@ export default {
       name: 'darkTheme',
       type: 'boolean',
       title: 'Dark Theme',
-      description: 'enable this field to render page in dark color',
+      initialValue: false,
+      localize: false,
+      description: 'Enable this field to render page in dark color',
+    },
+    {
+      name: 'backgroundColor',
+      type: 'color',
+      title: 'Page Background Color',
+      description: 'Customize page background color in light mode',
+      hidden: ({ document }) => document.darkTheme,
+      localize: false,
     },
     {
       name: 'navigationTitle',
@@ -72,20 +85,30 @@ export default {
       localize: false,
     },
     {
-      name: 'children',
-      title: 'Chilren Pages',
-      type: 'array',
-      of: [
-        {
-          type: 'localePage',
-        },
-      ],
+      name: 'isMultiSectionsBoby',
+      title: 'Is Multiple Sections Body',
+      type: 'boolean',
       localize: false,
+      initialValue: false,
+      description:
+        'Use this if page content body is complex and need to be split into many sections with different background horizontally',
     },
     {
       name: 'body',
+      title: 'Page Content Body',
+      description:
+        'In case page content body is simple and can be managed in one container with left-right margin',
       type: 'richText',
-      title: 'Body',
+      hidden: ({ document }) => document?.isMultiSectionsBoby,
+    },
+    {
+      name: 'sections',
+      title: 'Page Content Body By Sections',
+      description:
+        'In case body is complex and need to be devided into multiple sections with different background colors',
+      type: 'array',
+      of: [{ type: 'section' }],
+      hidden: ({ document }) => !document?.isMultiSectionsBoby,
     },
   ],
   orderings: [
@@ -113,15 +136,14 @@ export default {
   preview: {
     select: {
       title: 'title',
-      description: 'description',
-      slug: 'slug',
+      subtitle: 'description',
       media: 'seoMetaImage',
     },
-    prepare({ title = 'No title', description, media }) {
+    prepare({ title = 'No title', subtitle, media }) {
       return {
         title,
+        subtitle,
         media,
-        description,
       };
     },
   },

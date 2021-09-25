@@ -1,3 +1,5 @@
+import ImageTileWithDesc from './renderers/ImageTileWithDesc';
+
 export default {
   name: 'imageTileWithDesc',
   title: 'Image Tile With Description',
@@ -11,7 +13,7 @@ export default {
     {
       name: 'description',
       title: 'Description',
-      type: 'string',
+      type: 'text',
     },
     {
       name: 'direction',
@@ -27,4 +29,16 @@ export default {
       type: 'nstepImage',
     },
   ],
+  preview: {
+    select: {
+      title: 'title',
+      description: 'description',
+      direction: 'direction',
+      image: 'image',
+    },
+    prepare(selection) {
+      return selection;
+    },
+    component: ImageTileWithDesc,
+  },
 };

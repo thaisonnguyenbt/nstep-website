@@ -5,14 +5,20 @@ export interface LineBreakProps {
   node: LineBreak;
 }
 
-const LineBreakComponent: React.FunctionComponent<LineBreakProps> = (
-  props: LineBreakProps
-): ReactElement => {
-  const { style } = props.node;
-  if (style === 'break') {
-    return <br />;
-  } else if (style === 'divider') {
-    return <hr className="lineBreak" />;
+const LineBreakComponent: React.FunctionComponent<LineBreakProps> = ({
+  node,
+}: LineBreakProps): ReactElement => {
+  if (node.style === 'divider') {
+    return (
+      <hr
+        className={node.isFullScreenWidth ? `relative w-screen-container` : ''}
+        style={{
+          width: node.isFullScreenWidth ? '100vw' : '100%',
+          color: node?.color?.hex || 'gray',
+          borderTop: `${node.size || 1}px solid ${node?.color?.hex}`,
+        }}
+      />
+    );
   }
   return <></>;
 };

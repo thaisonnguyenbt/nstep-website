@@ -3,31 +3,97 @@
 @tailwind utilities;
 
 @import url('https://fonts.googleapis.com/css2?family=Montserrat&display=swap');
-@import url('https://fonts.googleapis.com/css2?family=Lato&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Lato:ital@0;1&display=swap');
 
 @layer base {
   html.dark {
     @apply bg-black;
   }
+
   html {
     @apply font-montserrat;
   }
+
+  p:empty {
+    @apply h-auto min-h-3 md:min-h-4 lg:min-h-6 xl:min-h-8 2xl:min-h-10;
+  }
+
   h1 {
     @apply text-14;
   }
+
   h2 {
     @apply text-9;
   }
+
   h3 {
     @apply text-h3;
   }
+
   h4 {
     @apply text-h4;
   }
+
   h5 {
     @apply text-h5;
   }
+
   h6 {
     @apply text-h6;
+  }
+}
+
+@layer components {
+  .section-heading {
+    @apply mb-3 md:mb-6 font-semibold uppercase leading-normal-12 text-red-primary;
+  }
+
+  .dark .section-heading {
+    @apply bg-red-gradient bg-clip-text;
+    color: inherit;
+    -webkit-text-fill-color: transparent;
+  }
+
+  .heading-2 {
+    @apply font-semibold leading-normal-12;
+  }
+
+  .heading-4 {
+    @apply font-semibold leading-normal-12;
+  }
+
+  .heading-5 {
+    @apply font-semibold leading-normal-12;
+  }
+
+  .heading-6 {
+    @apply font-semibold leading-normal-12 tracking-2;
+  }
+
+  .red-icon svg path {
+    fill: theme('colors.red-primary');
+  }
+  .white-icon svg path {
+    fill: theme('colors.white');
+  }
+
+  .benefits__item:before {
+    @apply h-2.5 w-2.5 absolute left-0 bg-red-gradient rounded-sm;
+    top: 0.813rem;
+    content: '';
+  }
+
+  .w-screen-container {
+    @apply sm:-left-container-sm md:-left-container-md lg:-left-container-lg xl:-left-container-xl 2xl:-left-container-2xl;
+  }
+
+  /* Chrome, Safari and Opera */
+  .no-scrollbar::-webkit-scrollbar {
+    display: none;
+  }
+
+  .no-scrollbar {
+    -ms-overflow-style: none; /* IE and Edge */
+    scrollbar-width: none; /* Firefox */
   }
 }

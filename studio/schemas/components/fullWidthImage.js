@@ -1,3 +1,5 @@
+import FullWidthImage from './renderers/FullWidthImage';
+
 export default {
   name: 'fullWidthImage',
   title: 'Full Width Image',
@@ -10,4 +12,13 @@ export default {
       type: 'nstepImage',
     },
   ],
+  preview: {
+    select: {
+      image: 'image',
+    },
+    prepare(selection) {
+      return selection;
+    },
+    component: FullWidthImage,
+  },
 };

@@ -1,3 +1,5 @@
+import ImageWithInfoBox from './renderers/ImageWithInfoBox';
+
 export default {
   name: 'imageWithInfoBox',
   title: 'Image With Info Box',
@@ -31,4 +33,17 @@ export default {
       type: 'nstepImage',
     },
   ],
+  preview: {
+    select: {
+      header: 'header',
+      description: 'description',
+      buttonText: 'buttonText',
+      buttonLink: 'buttonLink',
+      backgroundImage: 'backgroundImage',
+    },
+    prepare(selection) {
+      return selection;
+    },
+    component: ImageWithInfoBox,
+  },
 };

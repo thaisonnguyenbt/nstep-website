@@ -19,5 +19,10 @@ export default {
       title: 'Person Position',
       type: 'string',
     },
+    {
+      name: 'picture',
+      title: 'Picture',
+      type: 'nstepImage',
+    },
   ],
 };

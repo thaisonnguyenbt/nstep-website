@@ -1,5 +1,6 @@
-import { FaAlignCenter } from 'react-icons/fa';
+import { FaAlignCenter, FaExpandArrowsAlt } from 'react-icons/fa';
 import TextCenter from '../renderers/TextCenter';
+import TextColor from '../renderers/TextColor';
 
 export default {
   name: 'richText',
@@ -45,25 +46,60 @@ export default {
               render: TextCenter,
             },
           },
+          {
+            title: 'Font Lato',
+            value: 'font-lato',
+            blockEditor: {
+              icon: () => 'Font Lato',
+            },
+          },
         ],
         // Annotations can be any object structure – e.g. a link or a footnote.
         annotations: [
           {
-            name: 'link',
+            name: 'textColor',
+            title: 'Text Color',
+            type: 'color',
+            blockEditor: {
+              icon: () => 'Text Color',
+              render: TextColor,
+            },
+          },
+          {
+            name: 'margin',
             type: 'object',
-            title: 'URL',
+            title: 'Margin (px)',
             fields: [
               {
-                title: 'URL',
-                name: 'href',
-                type: 'url',
+                name: 'top',
+                title: 'Top',
+                type: 'number',
+              },
+              {
+                title: 'Bottom',
+                name: 'bottom',
+                type: 'number',
+              },
+              {
+                name: 'left',
+                title: 'Left',
+                type: 'number',
+              },
+              {
+                name: 'right',
+                title: 'Right',
+                type: 'number',
               },
             ],
+            blockEditor: {
+              icon: FaExpandArrowsAlt,
+              // render: TextColor,
+            },
           },
         ],
       },
       of: [
-        { type: 'image' },
+        { type: 'nstepImage' },
         { type: 'lineBreak' },
         { type: 'partnerLogos' },
         { type: 'twoColums' },
@@ -72,8 +108,14 @@ export default {
         { type: 'imageTilesGrid' },
         { type: 'imageTileWithDesc' },
         { type: 'benefits' },
+        { type: 'teamQuote' },
         { type: 'teamQuotesCarousel' },
         { type: 'imageWithInfoBox' },
+        { type: 'vacancies' },
+        { type: 'iconsBanner' },
+        { type: 'approachPhases' },
+        { type: 'highlightBoxesBanner' },
+        { type: 'carousel' },
       ],
     },
   ],

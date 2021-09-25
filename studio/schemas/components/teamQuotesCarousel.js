@@ -1,3 +1,5 @@
+import TeamQuotesCarousel from './renderers/TeamQuotesCarousel';
+
 export default {
   name: 'teamQuotesCarousel',
   title: 'Team Quotes Carousel',
@@ -21,4 +23,15 @@ export default {
       of: [{ type: 'teamQuote' }],
     },
   ],
+  preview: {
+    select: {
+      title: 'title',
+      backgroundImage: 'backgroundImage',
+      quotes: 'quotes',
+    },
+    prepare(selection) {
+      return selection;
+    },
+    component: TeamQuotesCarousel,
+  },
 };

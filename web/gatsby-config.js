@@ -13,12 +13,21 @@ module.exports = {
     'gatsby-plugin-image',
     `gatsby-plugin-root-import`,
     'gatsby-plugin-react-helmet',
+    'gatsby-plugin-gatsby-cloud',
     {
       resolve: 'gatsby-source-sanity',
       options: {
         ...clientConfig.sanity,
         watchMode: !isProd,
         overlayDrafts: !isProd,
+      },
+    },
+    {
+      resolve: 'gatsby-plugin-react-svg',
+      options: {
+        rule: {
+          include: /\.inline\.svg$/,
+        },
       },
     },
   ],

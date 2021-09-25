@@ -23,9 +23,21 @@ import benefits from './components/benefits';
 import teamQuotesCarousel from './components/teamQuotesCarousel';
 import teamQuote from './components/teamQuote';
 import imageWithInfoBox from './components/imageWithInfoBox';
+import vacancies from './components/vacancies';
+import vacancyItem from './components/vacancyItem';
+import iconsBanner from './components/iconsBanner';
+import iconBannerItem from './components/iconBannerItem';
+import approachPhases from './components/approachPhases';
+import approachPhase from './components/approachPhase';
+import highlightBoxesBanner from './components/highlightBoxesBanner';
+import section from './contentTypes/section';
+import contentBox from './components/contentBox';
+import carousel from './components/carousel';
+import carouselItem from './components/carouselItem';
 
 const nonLocolizedDocs = [
   richText,
+  section,
   lineBreak,
   twoColumns,
   fullWidthImage,
@@ -40,6 +52,17 @@ const nonLocolizedDocs = [
   teamQuote,
   teamQuotesCarousel,
   imageWithInfoBox,
+  vacancies,
+  vacancyItem,
+  iconsBanner,
+  iconBannerItem,
+  approachPhase,
+  approachPhases,
+  contentBox,
+  highlightBoxesBanner,
+  carouselItem,
+  carousel,
+
   // uncomment this line before running codegen
   // { ...localePage, title: 'Page', name: 'page' },
 ];

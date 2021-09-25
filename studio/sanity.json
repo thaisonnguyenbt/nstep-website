@@ -1,7 +1,7 @@
 {
   "root": true,
   "api": {
-    "projectId": "5imzs8cd",
+    "projectId": "5m100bpx",
     "dataset": "production"
   },
   "project": {
@@ -16,12 +16,22 @@
     "@sanity/desk-tool",
     "dashboard-widget-document-list",
     "dashboard-widget-netlify",
-    "autocomplete-tags"
+    "autocomplete-tags",
+    "@sanity/color-input",
+    "@sanity/production-preview"
   ],
   "parts": [
     {
       "name": "part:@sanity/base/schema",
       "path": "./schemas/schema.js"
+    },
+    {
+      "implements": "part:@sanity/production-preview/resolve-production-url",
+      "path": "./structure/resolveProductionUrl.js"
+    },
+    {
+      "name": "part:@sanity/desk-tool/structure",
+      "path": "./structure/deskStructure.js"
     }
   ]
 }

@@ -1,3 +1,5 @@
+import ImageTilesGrid from './renderers/ImageTilesGrid';
+
 export default {
   title: 'Image Tiles Grid',
   name: 'imageTilesGrid',
@@ -20,11 +22,14 @@ export default {
   preview: {
     select: {
       title: 'title',
+      imageTiles: 'imageTiles',
     },
-    prepare({ title = 'No title' }) {
+    prepare({ title = 'No title', imageTiles = [] }) {
       return {
         title,
+        imageTiles,
       };
     },
+    component: ImageTilesGrid,
   },
 };

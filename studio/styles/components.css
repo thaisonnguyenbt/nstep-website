@@ -1,0 +1,35 @@
+h1 {
+  font-size: 3.5rem;
+}
+
+h2 {
+  font-size: 2.25rem;
+}
+
+h3: {
+  font-size: 1.5rem;
+}
+
+h4: {
+  font-size: 1rem;
+}
+
+h5: {
+  font-size: 0.875rem;
+}
+h6: {
+  font-size: 0.75rem;
+}
+
+.w-176 {
+  width: 44rem;
+}
+
+[class^='InlineObject_root_'] {
+  max-width: 44rem;
+  width: 44rem;
+}
+
+[class^='InlineObject_previewContainer'] {
+  white-space: pre-line;
+}

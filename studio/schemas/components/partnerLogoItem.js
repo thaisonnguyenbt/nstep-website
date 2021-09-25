@@ -14,5 +14,11 @@ export default {
       title: 'Logo Image',
       type: 'nstepImage',
     },
+    {
+      name: 'hoverImage',
+      title: 'Hover Image',
+      description: 'Image displyed when hover mouse on',
+      type: 'nstepImage',
+    },
   ],
 };

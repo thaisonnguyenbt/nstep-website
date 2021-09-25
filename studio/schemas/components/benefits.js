@@ -1,3 +1,5 @@
+import Benefits from './renderers/Benefits';
+
 export default {
   name: 'benefits',
   title: 'Benefits',
@@ -21,4 +23,15 @@ export default {
       of: [{ type: 'benefitItem' }],
     },
   ],
+  preview: {
+    select: {
+      title: 'title',
+      description: 'description',
+      benefitItems: 'benefitItems',
+    },
+    prepare(selection) {
+      return selection;
+    },
+    component: Benefits,
+  },
 };

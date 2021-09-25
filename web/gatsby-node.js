@@ -14,9 +14,9 @@ async function createNstepPages(graphql, actions) {
             slug {
               current
             }
-            darkTheme {
-              en
-              vn
+            darkTheme
+            backgroundColor {
+              hex
             }
             navigationTitle {
               en
@@ -101,7 +101,9 @@ async function createNstepPages(graphql, actions) {
                 alt
               }
             }
+            isMultiSectionsBoby
             _rawBody
+            _rawSections
           }
         }
       }

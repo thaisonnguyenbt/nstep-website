@@ -1,41 +1,52 @@
 import React, { ReactElement } from 'react';
-import { PatnerLogos } from 'schema';
-import { imageUrlFor } from 'utils/CommonUtils';
+import { NstepImage, PartnerLogos } from 'schema';
+import { imageUrlPathFor } from 'utils/CommonUtils';
+import { imageAltPathFor } from 'utils/CommonUtils';
 
 export interface PartnerLogosProps {
-  node: PatnerLogos;
+  node: PartnerLogos;
 }
 
 const PartnerLogosComponent: React.FunctionComponent<PartnerLogosProps> = ({
   node,
 }: PartnerLogosProps): ReactElement => {
   const { title, logos } = node;
-
-  if (logos) {
-    return (
-      <div className="mx-auto flex flex-wrap mt-20 mb-[7.5rem]">
-        <h5 className="w-full mb-[3.25rem] text-xs font-semibold leading-tight text-center text-white text-opacity-25">
-          {title}
-        </h5>
-        <div className="w-full mx-auto flex flex-wrap lg:justify-between justify-center">
-          {logos
-            .filter(logo => logo.image?.asset)
-            .map(logo => {
-              return (
-                <div
-                  className="flex flex-col w-[10.625rem]"
-                  key={logo.targetLink}
-                >
-                  <img src={imageUrlFor(logo.image?.asset).url() || ''} />
-                </div>
-              );
-            })}
-        </div>
+  if (!logos) return <></>;
+  const exchangeImage = (
+    e: React.MouseEvent<HTMLImageElement, MouseEvent>,
+    toImage: NstepImage | undefined
+  ): void => {
+    if (toImage) {
+      e.currentTarget.src = imageUrlPathFor(toImage);
+      e.currentTarget.alt = imageAltPathFor(toImage);
+    }
+  };
+  return (
+    <div className="mx-auto my-20 flex flex-wrap">
+      <h6 className="heading-6 w-full mb-3 md:mb-[3.25rem] text-center uppercase  text-gray-primary text-opacity-25 dark:text-white dark:text-opacity-25">
+        {title}
+      </h6>
+      <div className="w-full mx-auto flex flex-wrap justify-center lg:justify-between ">
+        {logos
+          .filter(logo => logo.image?.asset)
+          .map(logo => {
+            return (
+              <div
+                className="w-[10.625rem] flex flex-col items-center justify-center hover:rounded-sm hover:bg-gray-300 dark:hover:bg-white dark:hover:bg-opacity-5"
+                key={logo.targetLink}
+              >
+                <img
+                  src={imageUrlPathFor(logo.image)}
+                  alt={imageAltPathFor(logo.image)}
+                  onMouseOver={e => exchangeImage(e, logo.hoverImage)}
+                  onMouseOut={e => exchangeImage(e, logo.image)}
+                />
+              </div>
+            );
+          })}
       </div>
-    );
-  }
-
-  return <></>;
+    </div>
+  );
 };
 
 export default PartnerLogosComponent;

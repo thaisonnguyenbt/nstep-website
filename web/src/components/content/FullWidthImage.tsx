@@ -1,6 +1,6 @@
 import React, { ReactElement } from 'react';
 import { FullWidthImage } from 'schema';
-import { imageUrlFor } from 'utils/CommonUtils';
+import { imageUrlPathFor } from 'utils/CommonUtils';
 
 export interface FullWidthImageProps {
   node: FullWidthImage;
@@ -8,18 +8,14 @@ export interface FullWidthImageProps {
 
 const FullWidthImageComponnent: React.FunctionComponent<FullWidthImageProps> =
   ({ node }: FullWidthImageProps): ReactElement => {
-    const image = node.image?.asset;
+    const image = node.image;
 
     if (!image) {
       return <></>;
     }
     return (
-      <div key={image._ref} className="w-screen">
-        <img
-          className="relative w-screen"
-          style={{ left: 'calc((1536px - 100vw) / 2)' }}
-          src={imageUrlFor(image).url() || ''}
-        />
+      <div className="relative w-screen w-screen-container">
+        <img className="relative w-screen" src={imageUrlPathFor(image)} />
       </div>
     );
   };
