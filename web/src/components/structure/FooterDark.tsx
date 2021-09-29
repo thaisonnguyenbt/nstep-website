@@ -14,8 +14,10 @@ const FooterContact: React.FunctionComponent<FooterContactProps> = ({
   phone,
 }: FooterContactProps): ReactElement => {
   return (
-    <div className="max-w-sm pt-8 md:pt-[11.25rem]">
-      <h5 id="contactus" className="section-heading mb-5">{title}</h5>
+    <div className="max-w-sm pt-24 md:pt-[11.25rem]">
+      <h5 id="contact-us" className="section-heading mb-5">
+        {title}
+      </h5>
       <div className="flex items-center">
         <div className="red-icon w-3 md:w-5">
           <EmailSvg />
@@ -47,7 +49,7 @@ const FooterCompany: React.FunctionComponent<FooterCompanyProps> = ({
   companies,
 }: FooterCompanyProps): ReactElement => {
   return (
-    <div className="mt-8 md:mt-[7.5rem] mb-8 md:mb-[6.75rem] flex text-base leading-normal-12">
+    <div className="mt-24 md:mt-[7.5rem] mb-8 md:mb-[6.75rem] flex text-base leading-normal-12">
       {companies.map((company, index) => (
         <div key={`company-${index}`} className="ml-14 first-of-type:ml-0 ">
           <div className="font-bold">{company.name}</div>
@@ -98,7 +100,7 @@ const companies = [
 const copyRight = 'Copyright © 2021 Nstep. All Rights Reserved.';
 const FooterDark: React.FunctionComponent = (): ReactElement => {
   return (
-    <footer className="md:h-[43.75rem] text-white bg-image-footer-black bg-[#0c0f18] bg-right md:bg-center bg-no-repeat">
+    <footer className="md:h-[43.75rem] text-white bg-image-footer-black-mobile md:bg-image-footer-black bg-[#0c0f18] bg-right-bottom md:bg-center bg-cover xl:bg-contain bg-no-repeat">
       <div className="container relative px-8 mx-auto">
         <FooterContact {...contact} />
         <FooterCompany companies={companies} />

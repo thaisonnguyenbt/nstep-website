@@ -48,29 +48,26 @@ const CarouselComponent: React.FunctionComponent<CarouselProps> = ({
     }
   };
 
-  const getItemSelected: any = () => {
-    return (
-      node &&
-      node.content &&
-      node.content.length > 0 &&
-      node.content[itemSelectedIndex]
-    );
-  };
+  const itemSelected: any =
+    node &&
+    node.content &&
+    node.content.length > 0 &&
+    node.content[itemSelectedIndex];
 
   return (
     <div>
       {renderIndicators()}
       <div className="flex-1 h-12 mt-5 border-t border-opacity-25 border-gray-primary"></div>
       <div className="">
-        <div key={getItemSelected()?.title}>
+        <div key={itemSelected?.title}>
           <div className="flex">
-            {getItemSelected()?.isSingleColumn &&
-              getItemSelected()?.content && (
-                <RichText blocks={getItemSelected()?.content} />
+            {itemSelected?.isSingleColumn &&
+              itemSelected?.content && (
+                <RichText blocks={itemSelected?.content} />
               )}
-            {!getItemSelected()?.isSingleColumn &&
-              getItemSelected()?.twoColumnsContent && (
-                <TwoColumns node={getItemSelected()?.twoColumnsContent} />
+            {!itemSelected?.isSingleColumn &&
+              itemSelected?.twoColumnsContent && (
+                <TwoColumns node={itemSelected?.twoColumnsContent} />
               )}
           </div>
         </div>

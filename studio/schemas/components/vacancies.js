@@ -17,6 +17,11 @@ export default {
       type: 'array',
       of: [{ type: 'vacancyItem' }],
     },
+    {
+      name: 'viewAllLink',
+      type: 'link',
+      title: 'View All Link',
+    },
   ],
   preview: {
     select: {

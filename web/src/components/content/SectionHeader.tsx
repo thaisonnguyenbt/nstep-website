@@ -9,11 +9,9 @@ const SectionHeaderComponent: React.FunctionComponent<SectionHeaderProps> = ({
   node,
 }: SectionHeaderProps): ReactElement => {
   return (
-    <section>
-      <h5 id={node.sectionId} className="section-heading">
-        {node.header}
-      </h5>
-    </section>
+    <h5 id={node.sectionId} className="section-heading">
+      {node.header}
+    </h5>
   );
 };
 

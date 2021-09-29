@@ -18,7 +18,7 @@ const PageOneCol: React.FunctionComponent<CreatePageProps> = ({
   return (
     <Layout pageContext={pageContext}>
       {!page.isMultiSectionsBoby && (
-        <div className="container mx-auto">
+        <div className="container px-8 mx-auto">
           <RichText blocks={page._rawBody} />
         </div>
       )}
@@ -30,7 +30,9 @@ const PageOneCol: React.FunctionComponent<CreatePageProps> = ({
               style={{
                 backgroundColor: section?.backgroundColor?.hex || 'inherit',
               }}
-              className={!section?.isFullScreenWidth ? 'container mx-auto' : ''}
+              className={
+                !section?.isFullScreenWidth ? 'container mx-auto px-8' : 'px-8'
+              }
             >
               <div
                 className={

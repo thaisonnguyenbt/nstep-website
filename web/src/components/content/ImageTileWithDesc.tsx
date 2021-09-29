@@ -28,17 +28,20 @@ const ImageTileWithDescComponent: React.FunctionComponent<ImageTileWithDescProps
         </div>
       </div>
     ) : (
-      <div className="flex flex-row">
-        <div className="bg-red-gradient w-[42.544%] shadow-1 rounded-l flex flex-col justify-center pl-[6.4%] pr-[7%]">
-          <div className="text-2xl font-bold leading-[1.8rem] mb-3">
+      <div className="flex flex-col-reverse md:flex-row">
+        <div className="py-3 md:py-0w-full md:w-[42.544%] bg-red-gradient shadow-1 rounded-b md:rounded-l flex flex-col justify-center pl-[6.4%] pr-[7%]">
+          <div className=" text-2xl font-bold leading-[1.8rem] mb-3">
             {title}
           </div>
           <div className="text-black dark:text-white font-lato text-opacity-[0.72] dark:text-opacity-[0.72]">
             {description}
           </div>
         </div>
-        <div className="w-[57.456%]">
-          <img className="w-full rounded-r" src={imageUrlPathFor(image)} />
+        <div className=" w-full md:w-[57.456%]">
+          <img
+            className="w-full rounded-t md:rounded-r"
+            src={imageUrlPathFor(image)}
+          />
         </div>
       </div>
     );

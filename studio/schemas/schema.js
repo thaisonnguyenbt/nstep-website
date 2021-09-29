@@ -34,11 +34,13 @@ import section from './contentTypes/section';
 import contentBox from './components/contentBox';
 import carousel from './components/carousel';
 import carouselItem from './components/carouselItem';
+import link from './contentTypes/link';
 
 const nonLocolizedDocs = [
   richText,
   section,
   lineBreak,
+  link,
   twoColumns,
   fullWidthImage,
   sectionHeader,

@@ -7,11 +7,12 @@
 
 @layer base {
   html.dark {
-    @apply bg-black;
+    @apply bg-dark-primary;
   }
 
-  html {
-    @apply font-montserrat;
+  html,
+  body {
+    @apply font-montserrat text-[12px] sm:text-[13px] md:text-[14px] lg:text-[15px] xl:text-[16px] 2xl:text-[17px];
   }
 
   p:empty {
@@ -19,11 +20,11 @@
   }
 
   h1 {
-    @apply text-14;
+    @apply text-h1;
   }
 
   h2 {
-    @apply text-9;
+    @apply text-h2;
   }
 
   h3 {
@@ -73,8 +74,13 @@
   .red-icon svg path {
     fill: theme('colors.red-primary');
   }
+
   .white-icon svg path {
     fill: theme('colors.white');
+  }
+
+  .hidden-hotfix {
+    display: none;
   }
 
   .benefits__item:before {
@@ -84,7 +90,7 @@
   }
 
   .w-screen-container {
-    @apply sm:-left-container-sm md:-left-container-md lg:-left-container-lg xl:-left-container-xl 2xl:-left-container-2xl;
+    @apply -left-8 sm:-left-container-sm md:-left-container-md lg:-left-container-lg xl:-left-container-xl 2xl:-left-container-2xl;
   }
 
   /* Chrome, Safari and Opera */

@@ -1,9 +1,9 @@
 /* eslint-disable import/no-unresolved */
 import React, { ReactElement } from 'react';
-import '../../../styles/tailwind.min.css?raw';
-import '../../../styles/components.css?raw';
 
 import { ApproachPhases } from '../../generated-schema';
+import '../../../styles/tailwind.min.css?raw';
+import '../../../styles/components.css?raw';
 
 interface ApproachPhasesProps {
   value: ApproachPhases;

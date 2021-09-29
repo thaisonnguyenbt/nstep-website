@@ -1,8 +1,8 @@
 /* eslint-disable import/no-unresolved */
 import React, { ReactElement } from 'react';
 import { SectionHeader } from '../../generated-schema';
-import '../../../styles/components.css?raw';
 import '../../../styles/tailwind.min.css?raw';
+import '../../../styles/components.css?raw';
 
 export interface SectionHeaderProps {
   value: SectionHeader;

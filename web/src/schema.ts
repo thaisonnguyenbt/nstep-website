@@ -91,7 +91,7 @@ export interface Page extends SanityDocument {
    *
    *
    */
-  tag?: Array<Tag>;
+  tags?: Array<Tag>;
 
   /**
    * SEO Meta Image — `nstepImage`
@@ -392,6 +392,44 @@ export type LineBreak = {
   isFullScreenWidth?: boolean;
 };
 
+export type Link = {
+  _type: 'link';
+  /**
+   * Is This An External Link ? — `boolean`
+   *
+   *
+   */
+  isExternalLink?: boolean;
+
+  /**
+   * External Link — `url`
+   *
+   *
+   */
+  externalLink?: string;
+
+  /**
+   * Internal Page — `reference`
+   *
+   *
+   */
+  internalPage?: SanityReference<LocalePage>;
+
+  /**
+   * Target Page Language — `string`
+   *
+   *
+   */
+  language?: 'en' | 'vn';
+
+  /**
+   * Target Page Anchor — `string`
+   *
+   *
+   */
+  anchor?: string;
+};
+
 export type TwoColums = {
   _type: 'twoColums';
   /**
@@ -548,7 +586,7 @@ export type ImageTileWithDesc = {
   title?: string;
 
   /**
-   * Description — `string`
+   * Description — `text`
    *
    *
    */
@@ -718,6 +756,13 @@ export type Vacancies = {
    * List of the job vacancies
    */
   vacanciesList?: Array<SanityKeyed<VacancyItem>>;
+
+  /**
+   * View All Link — `link`
+   *
+   *
+   */
+  viewAllLink?: Link;
 };
 
 export type VacancyItem = {
@@ -829,11 +874,18 @@ export type ApproachPhases = {
 export type ContentBox = {
   _type: 'contentBox';
   /**
-   * content — `array`
+   * Component Title — `string`
+   *
+   * Title used to referenced in CMS only
+   */
+  title?: string;
+
+  /**
+   * Content — `richText`
    *
    *
    */
-  content?: Array<SanityKeyed<SanityBlock>>;
+  content?: RichText;
 };
 
 export type HighlightBoxesBanner = {

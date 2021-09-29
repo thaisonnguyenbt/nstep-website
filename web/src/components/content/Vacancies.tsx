@@ -1,3 +1,4 @@
+import { useStaticQuery, graphql } from 'gatsby';
 import React, { ReactElement } from 'react';
 import { Vacancies } from 'schema';
 
@@ -8,6 +9,31 @@ interface VacanciesProps {
 const VacanciesComponent: React.FunctionComponent<VacanciesProps> = ({
   node,
 }: VacanciesProps): ReactElement => {
+  let viewAllLink;
+  if (node.viewAllLink && !node.viewAllLink.isExternalLink) {
+    const {
+      allSanityLocalePage: { edges },
+    } = useStaticQuery(graphql`
+      {
+        allSanityLocalePage {
+          edges {
+            node {
+              _id
+              slug {
+                current
+              }
+            }
+          }
+        }
+      }
+    `);
+    viewAllLink = edges.find(
+      page =>
+        page.node._id.split('.').pop() === node.viewAllLink?.internalPage?._ref
+    );
+    console.log(viewAllLink);
+  }
+
   return (
     <div>
       <div className="text-sm leading-[120%] tracking-[0.25rem] uppercase">
@@ -21,10 +47,10 @@ const VacanciesComponent: React.FunctionComponent<VacanciesProps> = ({
               key={vacancy.jobTitle}
             >
               <div className="flex flex-row gap-6 mb-2">
-                <div className="text-lg  leading-[120%] font-semibold dark:text-white dark:text-opacity-50">
+                <div className="text-lg leading-[120%] font-semibold dark:text-white dark:text-opacity-50">
                   {vacancy.employmentType}
                 </div>
-                <div className="text-lg  leading-[120%] font-semibold dark:text-white dark:text-opacity-50">
+                <div className="text-lg leading-[120%] font-semibold dark:text-white dark:text-opacity-50">
                   {vacancy.country}
                 </div>
               </div>

@@ -20,12 +20,12 @@ const Layout: React.FunctionComponent<PropsWithChildren<LayoutProps>> = ({
 
   return (
     <div
-      className="bg-no-repeat bg-contain"
+      className="bg-no-repeat bg-auto sm:bg-contain"
       style={{
-        backgroundImage: `url('${image?.url}')`,
+        backgroundImage: image?.url ? `url('${image?.url}')` : 'none',
       }}
     >
-      <div className="relative px-8 bg-transparent dark:text-white dark:bg-black -top-px sm:px-0">
+      <div className="relative bg-transparent dark:text-white dark:bg-black -top-px sm:px-0">
         <SEO
           title={page.title}
           description={page.description}

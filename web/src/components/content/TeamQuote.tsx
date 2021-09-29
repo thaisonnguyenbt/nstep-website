@@ -14,8 +14,8 @@ const TeamQuoteComponent: React.FunctionComponent<TeamQuoteProps> = ({
     <div className="border-l-2 border-red-primary pl-7 py-8 pb-8">
       <RichText blocks={node.quote} />
       <div className="flex mt-7">
-        <div className="mr-5">
-          <img src={imageUrlPathFor(node.picture)} />
+        <div className="flex-none h-14 w-14 mr-5">
+          <img className="h-full w-full rounded-full object-cover" src={imageUrlPathFor(node.picture)} />
         </div>
         <div className="flex flex-col justify-center w-full">
           <h3 className="font-bold text-sm leading-4 text-gray-primary">

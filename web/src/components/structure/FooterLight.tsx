@@ -36,7 +36,10 @@ const FooterContact: React.FunctionComponent<FooterContactProps> = ({
 }: FooterContactProps): ReactElement => {
   return (
     <>
-      <h5 id="contactus" className="text-sm uppercase font-semibold leading-normal-12 tracking-[0.25rem]">
+      <h5
+        id="contact-us"
+        className="text-sm uppercase font-semibold leading-normal-12 tracking-[0.25rem]"
+      >
         {title}
       </h5>
       <div className="mt-5 flex items-center">
@@ -128,9 +131,9 @@ const FooterLight: React.FunctionComponent = (): ReactElement => {
   return (
     <footer className="md:h-[45rem] text-white bg-red-primary">
       <div className="container relative px-8 mx-auto">
-        <div className="pt-6 md:pt-[10.25rem] flex flex-col md:flex-row justify-between">
+        <div className="pt-12 md:pt-[10.25rem] flex flex-col md:flex-row justify-between">
           <FooterTalkWith {...talkWith} />
-          <div className="mt-6 md:mt-0 mb-6 md:mb-32 p-8 md:p-12 bg-gray-primary">
+          <div className="mt-12 md:mt-0 mb-6 md:mb-32 p-8 md:p-12 bg-gray-primary">
             <FooterContact {...contact} />
             <FooterCompany companies={companies} />
           </div>

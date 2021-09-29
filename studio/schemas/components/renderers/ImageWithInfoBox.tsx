@@ -1,6 +1,9 @@
+/* eslint-disable import/no-unresolved */
 import React, { ReactElement } from 'react';
 import { ImageWithInfoBox } from '../../generated-schema';
 import { imageUrlPathFor } from '../../utils/CommonUtils';
+import '../../../styles/tailwind.min.css?raw';
+import '../../../styles/components.css?raw';
 
 export interface ImageWithInfoBoxProps {
   value: ImageWithInfoBox;

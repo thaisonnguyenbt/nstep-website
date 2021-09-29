@@ -8,7 +8,7 @@ export default function resolvePreviewUrl(document) {
         'https://nstep.gatsbyjs.io/';
   switch (document._type) {
     case 'localePage':
-      return `${baseUrl}/${document.slug.current}`;
+      return `${baseUrl}/${document?.slug?.current || ''}`;
     case 'siteSettings':
       return baseUrl;
     default:

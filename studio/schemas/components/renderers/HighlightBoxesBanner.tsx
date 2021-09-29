@@ -1,6 +1,9 @@
+/* eslint-disable import/no-unresolved */
 import React, { ReactElement } from 'react';
 import { HighlightBoxesBanner } from '../../generated-schema';
 import RichText from './RichText';
+import '../../../styles/tailwind.min.css?raw';
+import '../../../styles/components.css?raw';
 
 interface HighlightBoxesBannerProps {
   value: HighlightBoxesBanner;
